@@ -1,0 +1,12 @@
+module seven_segment_display_cntrl(key_in,clk,an,seg);
+input [31:0]key_in;
+input clk;
+output [7:0]an;
+output [6:0]seg;
+wire [2:0]cnt;
+wire [3:0]bin_out;
+refresh_counter R1(.clk(clk),.count(cnt));
+binary_in B1(.sel(cnt),.bin_in(key_in),.bin_out(bin_out));
+anode_cntrl A1(.sel(cnt),.an(an));
+hex H1(.data_in(bin_out),.seg_out(seg));
+endmodule
