@@ -1,0 +1,20 @@
+module d_ff(clk,in,q,qbar);
+input in;
+input clk;
+output reg q,qbar;
+always@(posedge clk)
+begin
+q<=in;
+qbar<=~in;
+end
+endmodule
+
+module debonce(clk,push,out);
+input clk;
+input push;
+output out;
+wire q1,q2bar;
+d_ff d1(.clk(clk),.in(push),.q(q1),.qbar());
+d_ff d2(.clk(clk),.in(q1),.qbar(q2bar),.q());
+assign out=q1&q2bar;
+endmodule
