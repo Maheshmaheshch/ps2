@@ -1,0 +1,22 @@
+module binary_in(sel,bin_in,bin_out);
+input [31:0]bin_in;
+input[2:0]sel;
+output reg [3:0]bin_out;
+wire [3:0]b1,b2,b3,b4,b5,b6,b7,b8;
+assign {b1,b2,b3,b4,b5,b6,b7,b8}=bin_in;
+always@(*)
+begin
+    case(sel)
+    3'b000: bin_out=b1;
+    3'b001: bin_out=b2;
+    3'b010: bin_out=b3;
+    3'b011: bin_out=b4;
+    3'b100: bin_out=b5;
+    3'b101: bin_out=b6;
+    3'b110: bin_out=b7;
+    3'b111: bin_out=b8;
+    default: bin_out=4'b0;
+    endcase
+    end
+endmodule
+
