@@ -1,3 +1,6 @@
+
+\\top module for display 
+
 module seven_segment_display_cntrl(key_in,clk,an,seg);
 input [31:0]key_in;
 input clk;
